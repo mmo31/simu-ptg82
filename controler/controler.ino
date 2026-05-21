@@ -10,8 +10,8 @@
     - (Option) 0.1 µF entre curseur et GND pour filtrer
 
   Potentiomètre 10k (axe RX) Gauchissement, Embout orange :
-    - Extrémités -> 5V et GND  (vert et bleu)
-    - Curseur    -> A1  Blanc
+    - Extrémités -> 5V et GND  (Marron et Mar ron/blanc)
+    - Curseur    -> A1  Vert
     - (Option) 0.1 µF entre curseur et GND pour filtrer
 
   Encodeur incrémental #1 E38S6G5 (axe Y) :
@@ -78,7 +78,7 @@ const uint8_t BTN_INDEX = 0;     // index du bouton HID (0 = premier)
 Joystick_ Joystick(
   JOYSTICK_DEFAULT_REPORT_ID,
   JOYSTICK_TYPE_JOYSTICK,
-  1,    // buttonCount (→ on a 1 bouton)
+  4,    // buttonCount (→ on a 1 bouton)
   0,    // hatSwitchCount
   true, // X
   true, // Y
