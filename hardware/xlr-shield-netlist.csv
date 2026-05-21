@@ -1,0 +1,18 @@
+Net,From,To,Note
+GND_SENS,Arduino_GND,J1-1,F1 Pot X masse
+GND_SENS,Arduino_GND,J2-1,F2 Pot RX masse
+GND_SENS,Arduino_GND,J3-1,F3 Encodeur Y masse
+GND_SENS,Arduino_GND,J4-1,F4 Encodeur Z masse
+GND_SENS,Arduino_GND,J5-1,F5 Bouton masse
++5V_SENS,Arduino_5V,J1-2,F1 Pot X alimentation
++5V_SENS,Arduino_5V,J2-2,F2 Pot RX alimentation
++5V_SENS,Arduino_5V,J3-2,F3 Encodeur Y alimentation
++5V_SENS,Arduino_5V,J4-2,F4 Encodeur Z alimentation
++5V_SENS,Arduino_5V,J5-2,F5 Bouton alimentation
+AXIS_X_SIG,Arduino_A0,J1-3,F1 curseur potentiomètre X
+AXIS_RX_SIG,Arduino_A1,J2-3,F2 curseur potentiomètre RX
+ENC_Y_A,Arduino_D2,J3-3,F3 voie A encodeur Y
+ENC_Y_B,Arduino_D3,J3-4,F3 voie B encodeur Y
+ENC_Z_A,Arduino_D0,J4-3,F4 voie A encodeur Z
+ENC_Z_B,Arduino_D1,J4-4,F4 voie B encodeur Z
+BTN_0_SIG,Arduino_D4,J5-3,F5 signal bouton

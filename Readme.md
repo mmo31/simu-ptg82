@@ -45,15 +45,15 @@ L'Arduino Leonardo émule un joystick USB avec 4 axes absolus et 1 bouton :
 
 ### 2. Tableau Général des Connexions
 
-> Convention commune proposée (homogène sur tous les câbles) : **XLR pin 1 = +5V**, **XLR pin 2 = GND (neutre/masse)**.
+> **Convention homogène** : Chaque capteur = 1 câble XLR 5 brins. **XLR pin 1 = GND (masse)**, **XLR pin 2 = +5V (alimentation)**, **pin 3+ = signaux**.
 
-| Organe / Axe | Capteur | Faisceau | Couleur connecteur XLR 8 (côté Arduino) | Couleur Fil Capteur (1 fil / ligne) | Pin XLR 8 + couleur | Borne Arduino | Rôle / Signal |
-| :--- | :--- | :---: | :--- | :--- | :--- | :--- | :--- |
-| **Axe X** (Profondeur) | Potentiomètre 10k | **F1** | **Rouge** | Vert<br>Bleu<br>Blanc | Pin 1 (**Rouge**)<br>Pin 2 (**Noir**)<br>Pin 3 (**Blanc**) | **+5V**<br>**GND**<br>**A0** | Alimentation<br>Masse (neutre)<br>Curseur (Signal) |
-| **Axe RX** (Gauchissement) | Potentiomètre 10k | **F2** | **Bleu** | Marron<br>Marron/Blanc<br>Vert | Pin 1 (**Rouge**)<br>Pin 2 (**Noir**)<br>Pin 3 (**Blanc**) | **+5V**<br>**GND**<br>**A1** | Alimentation<br>Masse (neutre)<br>Curseur (Signal) |
-| **Axe Y** (Encodeur #1) | E38S6G5 | **F3** | **Vert** | Rouge<br>Noir<br>Vert<br>Blanc | Pin 1 (**Rouge**)<br>Pin 2 (**Noir**)<br>Pin 3 (**Vert**)<br>Pin 4 (**Blanc**) | **+5V**<br>**GND**<br>**D2** (Voie A)<br>**D3** (Voie B) | Alimentation VCC<br>Masse / Blindage<br>Signal A<br>Signal B |
-| **Axe Z** (Encodeur #2) | E38S6G5 | **F4** | **Jaune** | Rouge<br>Noir<br>Vert/Jaune<br>Blanc | Pin 1 (**Rouge**)<br>Pin 2 (**Noir**)<br>Pin 3 (**Vert**)<br>Pin 4 (**Blanc**) | **+5V**<br>**GND**<br>**D0** (Voie A)<br>**D1** (Voie B) | Alimentation VCC<br>Masse / Blindage<br>Signal A<br>Signal B |
-| **Bouton #0** | Bouton Poussoir | **F5** | **Violet** | Fil signal<br>Fil masse | Pin 3 (**Blanc**)<br>Pin 2 (**Noir**) | **D4**<br>**GND** | Signal bouton<br>Masse (neutre) |
+| Organe / Axe | Capteur | Faisceau | Couleur connecteur XLR 5 | Fil dans le câble XLR (1 fil / ligne) | Pin XLR 5 | Borne Arduino | Rôle / Signal |
+| :--- | :--- | :---: | :--- | :--- | :---: | :--- | :--- |
+| **Axe X** (Profondeur) | Potentiomètre 10k | **F1** | **Rouge** | Blindage/Noir<br>Rouge<br>Blanc | Pin 1<br>Pin 2<br>Pin 3 | **GND**<br>**+5V**<br>**A0** | Masse<br>Alimentation<br>Curseur (Signal) |
+| **Axe RX** (Gauchissement) | Potentiomètre 10k | **F2** | **Bleu** | Blindage/Noir<br>Rouge<br>Blanc | Pin 1<br>Pin 2<br>Pin 3 | **GND**<br>**+5V**<br>**A1** | Masse<br>Alimentation<br>Curseur (Signal) |
+| **Axe Y** (Encodeur #1) | E38S6G5 | **F3** | **Vert** | Blindage/Noir<br>Rouge<br>Vert<br>Blanc | Pin 1<br>Pin 2<br>Pin 3<br>Pin 4 | **GND**<br>**+5V**<br>**D2** (Voie A)<br>**D3** (Voie B) | Masse / Blindage<br>Alimentation VCC<br>Signal A<br>Signal B |
+| **Axe Z** (Encodeur #2) | E38S6G5 | **F4** | **Jaune** | Blindage/Noir<br>Rouge<br>Vert/Jaune<br>Blanc | Pin 1<br>Pin 2<br>Pin 3<br>Pin 4 | **GND**<br>**+5V**<br>**D0** (Voie A)<br>**D1** (Voie B) | Masse / Blindage<br>Alimentation VCC<br>Signal A<br>Signal B |
+| **Bouton #0** | Bouton Poussoir | **F5** | **Violet** | Noir<br>Rouge<br>Blanc | Pin 1<br>Pin 2<br>Pin 3 | **GND**<br>**(optionnel)**<br>**D4** | Masse<br>**(non utilisé)**<br>Signal bouton |
 
 ### 3. Schémas de principe
 
@@ -80,29 +80,36 @@ L'Arduino Leonardo émule un joystick USB avec 4 axes absolus et 1 bouton :
 
 *(Lecture à 1 (HIGH) au repos, 0 (LOW) quand appuyé)*
 
-#### Repérage des broches d'un connecteur XLR 5 pins
+#### Repérage des broches d'un connecteur XLR 5 pins (utilisé pour tous les câbles)
 
 > ℹ️ Les schémas ci-dessous sont donnés en **vue de face (côté accouplement)**. Toujours vérifier le marquage gravé sur le connecteur et la datasheet fabricant avant sertissage/soudure.
 
 **XLR 5 mâle (vue de face, pins visibles)**
 
 ```text
-				Détrompeur
-					↑
+              Détrompeur
+                  ↑
 
-			 (2) (1) (3)
-				 (4) (5)
+            (3) (1) (2)
+               (4) (5)
 ```
 
 **XLR 5 femelle (vue de face, alvéoles visibles)**
 
 ```text
-				Détrompeur
-					↑
+              Détrompeur
+                  ↑
 
-			 (3) (1) (2)
-				 (5) (4)
+            (2) (1) (3)
+               (5) (4)
 ```
+
+### Affectation simplifiée pour chaque câble
+
+Pour chaque faisceau (F1, F2, F3, F4, F5), les broches utilisées sont :
+- **Pin 1 = GND (Noir)** — Masse/blindage commun
+- **Pin 2 = +5V (Rouge)** — Alimentation
+- **Pin 3+ = Signaux** — Selon capteur (potentiomètre = 1 signal, encodeur = 2 signaux, bouton = 1 signal)
 
 ---
 
@@ -147,4 +154,15 @@ Dans le fichier `.ino`, plusieurs paramètres peuvent être ajustés :
 * `PPR` : Impulsions par tour de l'encodeur (actuellement à `200`).
 * `TURNS_FOR_RANGE_Y` & `TURNS_FOR_RANGE_Z` : Nombre de tours pour couvrir la plage de 0 à 1023 (actuellement à `1`).
 * `BTN_DEBOUNCE_MS` : Durée de l'anti-rebond logiciel en millisecondes (actuellement à `10`).
+
+---
+
+## 🧩 Plan de carte électronique (Shield XLR)
+
+Un plan de réalisation (prêt à saisir dans EasyEDA ou Eagle) est disponible ici :
+
+- [hardware/xlr-shield-plan.md](hardware/xlr-shield-plan.md)
+- [hardware/xlr-shield-netlist.csv](hardware/xlr-shield-netlist.csv)
+
+Le plan reprend le même mapping que le firmware actuel (`A0`, `A1`, `D0..D4`, `+5V`, `GND`).
 
