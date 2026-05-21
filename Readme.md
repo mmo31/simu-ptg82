@@ -45,13 +45,15 @@ L'Arduino Leonardo émule un joystick USB avec 4 axes absolus et 1 bouton :
 
 ### 2. Tableau Général des Connexions
 
-| Organe / Axe | Capteur | Faisceau | Couleur connecteur XLR 8 (côté Arduino) | Couleur Fil Capteur | Borne Arduino | Rôle / Signal |
-| :--- | :--- | :---: | :--- | :--- | :---: | :--- |
-| **Axe X** (Profondeur) | Potentiomètre 10k | **F1** | **Rouge** | Vert et Bleu<br>Blanc | **5V et GND**<br>**A0** | Alimentation / Masse<br>Curseur (Signal) |
-| **Axe RX** (Gauchissement) | Potentiomètre 10k | **F2** | **Bleu** | Marron et Marron/Blanc<br>Vert | **5V et GND**<br>**A1** | Alimentation / Masse<br>Curseur (Signal) |
-| **Axe Y** (Encodeur #1) | E38S6G5 | **F3** | **Vert** | Rouge<br>Noir<br>Vert<br>Blanc | **+5V**<br>**GND**<br>**D2** (Voie A)<br>**D3** (Voie B) | Alimentation VCC<br>Masse / Blindage<br>Interruption<br>Interruption |
-| **Axe Z** (Encodeur #2) | E38S6G5 | **F4** | **Jaune** | Rouge<br>Noir<br>Vert/Jaune<br>Blanc | **+5V**<br>**GND**<br>**D0** (Voie A)<br>**D1** (Voie B) | Alimentation VCC<br>Masse / Blindage<br>Signal<br>Signal |
-| **Bouton #0** | Bouton Poussoir | **F5** | **Violet** | N/A | **D4**<br>**GND** | Signal Bouton<br>Masse |
+> Convention commune proposée (homogène sur tous les câbles) : **XLR pin 1 = +5V**, **XLR pin 2 = GND (neutre/masse)**.
+
+| Organe / Axe | Capteur | Faisceau | Couleur connecteur XLR 8 (côté Arduino) | Couleur Fil Capteur (1 fil / ligne) | Pin XLR 8 + couleur | Borne Arduino | Rôle / Signal |
+| :--- | :--- | :---: | :--- | :--- | :--- | :--- | :--- |
+| **Axe X** (Profondeur) | Potentiomètre 10k | **F1** | **Rouge** | Vert<br>Bleu<br>Blanc | Pin 1 (**Rouge**)<br>Pin 2 (**Noir**)<br>Pin 3 (**Blanc**) | **+5V**<br>**GND**<br>**A0** | Alimentation<br>Masse (neutre)<br>Curseur (Signal) |
+| **Axe RX** (Gauchissement) | Potentiomètre 10k | **F2** | **Bleu** | Marron<br>Marron/Blanc<br>Vert | Pin 1 (**Rouge**)<br>Pin 2 (**Noir**)<br>Pin 3 (**Blanc**) | **+5V**<br>**GND**<br>**A1** | Alimentation<br>Masse (neutre)<br>Curseur (Signal) |
+| **Axe Y** (Encodeur #1) | E38S6G5 | **F3** | **Vert** | Rouge<br>Noir<br>Vert<br>Blanc | Pin 1 (**Rouge**)<br>Pin 2 (**Noir**)<br>Pin 3 (**Vert**)<br>Pin 4 (**Blanc**) | **+5V**<br>**GND**<br>**D2** (Voie A)<br>**D3** (Voie B) | Alimentation VCC<br>Masse / Blindage<br>Signal A<br>Signal B |
+| **Axe Z** (Encodeur #2) | E38S6G5 | **F4** | **Jaune** | Rouge<br>Noir<br>Vert/Jaune<br>Blanc | Pin 1 (**Rouge**)<br>Pin 2 (**Noir**)<br>Pin 3 (**Vert**)<br>Pin 4 (**Blanc**) | **+5V**<br>**GND**<br>**D0** (Voie A)<br>**D1** (Voie B) | Alimentation VCC<br>Masse / Blindage<br>Signal A<br>Signal B |
+| **Bouton #0** | Bouton Poussoir | **F5** | **Violet** | Fil signal<br>Fil masse | Pin 3 (**Blanc**)<br>Pin 2 (**Noir**) | **D4**<br>**GND** | Signal bouton<br>Masse (neutre) |
 
 ### 3. Schémas de principe
 
